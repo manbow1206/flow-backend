@@ -1,9 +1,13 @@
+// main宣言、main()から実行
 package main
 
+// パッケージを宣言
 import (
-    "fmt"
+    f "fmt" // 別名
+    // _ "string" // パッケージを使用しない
+    // "exsample"
 )
 
 func main() {
-    fmt.Println("hello world")
+    f.Println("まんぼう")
 }
