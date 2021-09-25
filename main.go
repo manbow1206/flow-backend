@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	f "fmt" // 別名
 )
 
@@ -9,6 +8,8 @@ import (
 
 func main() {
 
+    // variable
+    // f.Println("---variable syntax---")
 	// var message string = "変数を使用"
 
 	// 複数変数宣言
@@ -49,6 +50,7 @@ func main() {
 	f.Println(Str)
 
 	// if
+    // f.Println("---if syntax---")
 	a, b := 10, 100
 	if a > b {
 		f.Println("a is larger than b")
@@ -65,7 +67,9 @@ func main() {
 	//  NG 三項演算子
 	// n == 10 ? yes : no
 
+
 	// for
+    // f.Println("---for syntax---")
 	for i := 0; i < 10; i++ {
 		f.Println(i)
 	}
@@ -94,4 +98,52 @@ func main() {
 		}
 		f.Println(m)
 	}
+
+
+    // switch
+    f.Println("---switch syntax---")
+    SwitchValiable := 0
+
+    switch SwitchValiable {
+    case 15:
+        f.Println("FizzBuzz")
+    case 5, 10:
+        f.Println("Fizz")
+    case 3,6,9:
+        f.Println("Buzz")
+    default:
+        f.Println(n)
+    }
+
+    // switch fallthrough
+    SwitchFallthrough := 3
+
+    switch SwitchFallthrough {
+    case 3:
+        SwitchFallthrough = SwitchFallthrough - 1
+        fallthrough
+    case 2:
+        SwitchFallthrough = SwitchFallthrough - 1
+        fallthrough
+    case 1:
+        SwitchFallthrough = SwitchFallthrough - 1
+        f.Println(SwitchFallthrough)
+    default:
+        f.Println(SwitchFallthrough)
+    }
+
+    // switch if Ver
+    SwitchIf := 10
+
+    switch {
+    case SwitchIf % 15 == 0:
+        f.Println("FizzBuzz")
+    case SwitchIf % 5 == 0:
+        f.Println("Fizz")
+    case SwitchIf % 3 == 0:
+        f.Println("Buzz")
+    default:
+        f.Println(SwitchIf)
+    }
+
 }
