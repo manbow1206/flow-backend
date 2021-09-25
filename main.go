@@ -2,6 +2,7 @@ package main
 
 import (
 	f "fmt" // 別名
+    "fmt"
 )
 
 // var message string = "変数を使用"
@@ -9,7 +10,7 @@ import (
 func main() {
 
     // variable
-    // f.Println("---variable syntax---")
+    f.Println("---variable syntax---")
 	// var message string = "変数を使用"
 
 	// 複数変数宣言
@@ -50,7 +51,7 @@ func main() {
 	f.Println(Str)
 
 	// if
-    // f.Println("---if syntax---")
+    f.Println("---if syntax---")
 	a, b := 10, 100
 	if a > b {
 		f.Println("a is larger than b")
@@ -69,7 +70,7 @@ func main() {
 
 
 	// for
-    // f.Println("---for syntax---")
+    f.Println("---for syntax---")
 	for i := 0; i < 10; i++ {
 		f.Println(i)
 	}
@@ -145,5 +146,18 @@ func main() {
     default:
         f.Println(SwitchIf)
     }
+
+    // // function
+    // fmt.Println("---function syntax---")
+
+    // // basic
+    // func hello() {
+    //     f.Println("Hello")
+    // }
+
+    // arg Ver
+    // func arg(i, j int) {
+    //     sum i + j
+    // }
 
 }
