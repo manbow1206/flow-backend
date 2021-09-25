@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	f "fmt" // 別名
 )
 
@@ -47,38 +48,50 @@ func main() {
 	f.Println("※↓stringゼロ値")
 	f.Println(Str)
 
+	// if
+	a, b := 10, 100
+	if a > b {
+		f.Println("a is larger than b")
+	} else if a < b {
+		f.Println("a is smaller than b")
+	} else {
+		f.Println("a equals b")
+	}
 
-    // if
-    a, b := 10 ,100
-    if a > b {
-        f.Println("a is larger than b")
-    } else if a < b {
-        f.Println("a is smaller than b")
-    } else {
-        f.Println("a equals b")
-    }
+	// NG if 省略
+	// if n == 10
+	//     f.Println(n)
 
-    // NG if 省略
-    // if n == 10
-    //     f.Println(n)
+	//  NG 三項演算子
+	// n == 10 ? yes : no
 
-    //  NG 三項演算子
-    // n == 10 ? yes : no
+	// for
+	for i := 0; i < 10; i++ {
+		f.Println(i)
+	}
 
-    // for
-    for i := 0; i < 10; i++ {
-        f.Println(i)
-    }
+	// for for while
+	n := 0
+	for n < 10 {
+		f.Println(n)
+		n++
+	}
 
-    // for for while
-    n := 0
-    for n < 10 {
-        f.Println(n)
-        n++
-    }
+	// infinite loop
+	// for {
+	//     doSmething()
+	// }
 
-    // infinite loop
-    // for {
-    //     doSmething()
-    // }
+	// break, continue
+	m := 0
+	for {
+		m++
+		if m > 10 {
+			break
+		}
+		if m%2 == 0 {
+			continue
+		}
+		f.Println(m)
+	}
 }
