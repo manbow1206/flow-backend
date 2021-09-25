@@ -29,4 +29,21 @@ func main() {
 	const Constant string = "定数を使用"
 	f.Println(Constant)
 
+	// # ゼロ値
+	// ## 整数型
+	var Zero int
+	f.Println(Zero)
+
+	// ## 浮動小数型
+	var Float float64
+	f.Println(Float)
+
+	// ## 真偽型
+	var Bool bool
+	f.Println(Bool)
+
+	// ## 文字列
+	var Str string
+	f.Println(Str)
+
 }
