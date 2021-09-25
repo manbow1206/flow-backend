@@ -44,7 +44,9 @@ func main() {
 
 	// ## 文字列
 	var Str string
+	f.Println("※↓stringゼロ値")
 	f.Println(Str)
+
 
     // if
     a, b := 10 ,100
@@ -63,4 +65,20 @@ func main() {
     //  NG 三項演算子
     // n == 10 ? yes : no
 
+    // for
+    for i := 0; i < 10; i++ {
+        f.Println(i)
+    }
+
+    // for for while
+    n := 0
+    for n < 10 {
+        f.Println(n)
+        n++
+    }
+
+    // infinite loop
+    // for {
+    //     doSmething()
+    // }
 }
