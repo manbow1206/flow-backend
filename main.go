@@ -46,4 +46,21 @@ func main() {
 	var Str string
 	f.Println(Str)
 
+    // if
+    a, b := 10 ,100
+    if a > b {
+        f.Println("a is larger than b")
+    } else if a < b {
+        f.Println("a is smaller than b")
+    } else {
+        f.Println("a equals b")
+    }
+
+    // NG if 省略
+    // if n == 10
+    //     f.Println(n)
+
+    //  NG 三項演算子
+    // n == 10 ? yes : no
+
 }
