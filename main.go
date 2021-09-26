@@ -261,6 +261,7 @@ func main() {
     f.Println(slice1[0])
 
     // スライス末尾に追加 append()
+    f.Println("---- append() ----")
     var slice2 []string
     f.Println("---- append()前のスライス ----")
     f.Println(slice2)
@@ -275,6 +276,18 @@ func main() {
     f.Println(slice2)
     CheckType(slice2)
 
+    // rang
+    var RangeCheck[4]string
+
+    RangeCheck[0] = "a"
+    RangeCheck[1] = "b"
+    RangeCheck[2] = "c"
+    RangeCheck[3] = "d"
+
+    f.Println("---- rangeのスライス ----")
+    for i, s :=  range RangeCheck {
+        f.Println(i, s)
+    }
 
 
 }
