@@ -361,7 +361,17 @@ func main() {
     // }
     // defer file.Close()
 
-    
+    // パニック
+	f.Println("---- Panic Syntax----")
+    // defer func() {
+    //     err := recover() // パニックが起きた際のエラーを取得
+    //     if err != nil {
+    //         log.Fatal(err)
+    //     }
+    // }()
+
+    // a := []int{1,2,3,4}
+    // f.Println(a) //パニックが発生
 
 }
 
