@@ -2,6 +2,7 @@ package main
 
 import (
 	f "fmt" // 別名
+     "reflect"
 )
 
 func main() {
@@ -249,6 +250,33 @@ func main() {
 	//     fmt.Println(arr) // [a b c d]
 	// }
 
+
+    // スライス
+	f.Println("------------- Slice syntax -------------")
+    // 配列の使用は、シビアなメモリ管理が必要なプログラムなので、それ以外の場面では基本的にはスライスを使用
+
+    // var slice []string
+
+    slice1 := []string{"a", "b", "c"}
+    f.Println(slice1[0])
+
+    // スライス末尾に追加 append()
+    var slice2 []string
+    f.Println("---- append()前のスライス ----")
+    f.Println(slice2)
+    CheckType(slice2)
+
+    slice2 = append(slice2, "マンボウ")
+    slice2 = append(slice2, "ジンベイザメ")
+    slice2 = append(slice2, "まぐろ")
+    slice2 = append(slice2, "いるか")
+
+    f.Println("---- append()後のスライス ----")
+    f.Println(slice2)
+    CheckType(slice2)
+
+
+
 }
 
 // returns Ver
@@ -256,4 +284,9 @@ func RetunrsFunc(i, j int) (int, int) {
 	i = i + 1
 	j = j + 1
 	return i, j
+}
+
+// Check Type
+func CheckType(t interface{}) {
+    f.Println(reflect.TypeOf(t))
 }
