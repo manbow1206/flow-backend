@@ -2,7 +2,8 @@ package main
 
 import (
 	f "fmt" // 別名
-     "reflect"
+	"reflect"
+	// "golang.org/x/text/unicode/norm"
 )
 
 func main() {
@@ -251,7 +252,7 @@ func main() {
 	// }
 
 
-    // スライス
+    // Slice
 	f.Println("------------- Slice syntax -------------")
     // 配列の使用は、シビアなメモリ管理が必要なプログラムなので、それ以外の場面では基本的にはスライスを使用
 
@@ -261,9 +262,9 @@ func main() {
     f.Println(slice1[0])
 
     // スライス末尾に追加 append()
-    f.Println("---- append() ----")
+    f.Println("---- Slice append() ----")
     var slice2 []string
-    f.Println("---- append()前のスライス ----")
+    f.Println("---- Slice append()前 ----")
     f.Println(slice2)
     CheckType(slice2)
 
@@ -272,7 +273,7 @@ func main() {
     slice2 = append(slice2, "まぐろ")
     slice2 = append(slice2, "いるか")
 
-    f.Println("---- append()後のスライス ----")
+    f.Println("---- Slice append()後 ----")
     f.Println(slice2)
     CheckType(slice2)
 
@@ -284,10 +285,22 @@ func main() {
     RangeCheck[2] = "c"
     RangeCheck[3] = "d"
 
-    f.Println("---- rangeのスライス ----")
+    f.Println("---- Slice range ----")
     for i, s :=  range RangeCheck {
         f.Println(i, s)
     }
+
+    // 値の切り出し
+    f.Println("---- Slice 値の切り出し ----")
+    slice3 := []int64{0,1,2,3,4,5,6}
+    f.Println(slice3[0:1])
+    f.Println(slice3[0:2])
+    f.Println(slice3[0:3])
+    f.Println(slice3[:5])
+    f.Println(slice3[5:])
+    f.Println(slice3[:])
+    f.Println(slice3[0:len(slice3)])
+
 
 
 }
