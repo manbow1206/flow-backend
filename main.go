@@ -186,6 +186,16 @@ func main() {
     // }
     // fileを用いた処理
 
+    // 名前付き戻り値
+    // func NamaReturn(i,j int) (result int, err error) {
+    //     if j == 0 {
+    //         err = errors.Ner("divied by zero")
+    //         return //自動的に名前付き返り値が返される。この場合はreturn 0, err
+    //     }
+    //     result = i / j
+    //     return //return result, nil と同じ
+    // }
+
 }
 
 // returns Ver
