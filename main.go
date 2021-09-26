@@ -352,6 +352,17 @@ func main() {
     callByRef(&PointerInt)
     f.Println(PointerInt)
 
+
+    // defer
+	f.Println("---- Defer Syntax----")
+    // file, err := os.Open("./error.go")
+    // if err != nil {
+    //     // エラー処理
+    // }
+    // defer file.Close()
+
+    
+
 }
 
 // Check Type
