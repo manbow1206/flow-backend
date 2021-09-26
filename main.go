@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	f "fmt" // 別名
 	"reflect"
 	// "golang.org/x/text/unicode/norm"
@@ -363,6 +364,8 @@ func main() {
 
     // パニック
 	f.Println("---- Panic Syntax----")
+    // エラーを戻り値として表現できない場合や、回復不可能なシステムエラーで大域脱出が必要な場合に使用
+    // 通常は関数の戻り値として、呼び出し側に返す
     // defer func() {
     //     err := recover() // パニックが起きた際のエラーを取得
     //     if err != nil {
@@ -373,6 +376,13 @@ func main() {
     // a := []int{1,2,3,4}
     // f.Println(a) //パニックが発生
 
+
+    // panic()
+    // a := []int{1,2,3}
+    // for i := 0; i < 10; i++ {
+    //     panic(errors,New("Index out of range"))
+    // }
+    // f.Println(a[i])
 }
 
 // Check Type
