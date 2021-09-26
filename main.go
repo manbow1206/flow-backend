@@ -341,6 +341,17 @@ func main() {
     for key, value := range month1 {
         f.Println("%d %s\n", key, value)
     }
+
+    // ポインター
+	f.Println("---- Pointer Syntax----")
+
+    var PointerInt int = 10
+    callByValue(PointerInt)
+    f.Println(PointerInt)
+
+    callByRef(&PointerInt)
+    f.Println(PointerInt)
+
 }
 
 // Check Type
@@ -361,4 +372,13 @@ func sum1(nums ...int) (result int) {
 		result += n
 	}
 	return
+}
+
+// Ponter
+func callByValue(i int) {
+    i = 20
+}
+
+func callByRef(i *int) {
+    *i = 20
 }
