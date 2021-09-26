@@ -204,7 +204,7 @@ func main() {
     }(2, 4)
 
     // 変数に関数リテラルを入れる場合
-    var sum func(i ,j int) {
+    var sum func(i ,j int) = func(i, j int){
         f.Println(i + j)
     }
 
