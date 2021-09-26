@@ -301,6 +301,38 @@ func main() {
 	f.Println(slice3[0:len(slice3)])
 
 	f.Println(sum1(1, 2, 3))
+
+	// Map
+	f.Println("------------- Map syntax -------------")
+	// 宣言と初期化
+	f.Println("---- Map declaration  ----")
+	var month map[int]string = map[int]string{}
+
+	month[1] = "January"
+	month[2] = "February"
+	f.Println(month)
+	CheckType(month)
+
+	month1 := map[int]string{
+		1: "January",
+		2: "February",
+	}
+
+    f.Println(month1)
+	CheckType(month1)
+
+    // 操作
+	f.Println("---- Map operation  ----")
+    jan := month[1]
+    f.Println(jan)
+
+    test, ok := month[1]
+    f.Println(test)
+    if ok {
+        f.Println("OK")
+    }
+
+    
 }
 
 // Check Type
