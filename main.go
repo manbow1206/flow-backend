@@ -187,6 +187,7 @@ func main() {
     // fileを用いた処理
 
     // 名前付き戻り値
+    // メリット : 関数の宣言時から戻り値の意味が把握できる。return時の書き間違いなど防止
     // func NamaReturn(i,j int) (result int, err error) {
     //     if j == 0 {
     //         err = errors.Ner("divied by zero")
@@ -195,6 +196,19 @@ func main() {
     //     result = i / j
     //     return //return result, nil と同じ
     // }
+
+    // 関数リテラル
+    // その場で使用する無名関数
+    func(i, j int) {
+        f.Println(i + j)
+    }(2, 4)
+
+    // 変数に関数リテラルを入れる場合
+    var sum func(i ,j int) {
+        f.Println(i + j)
+    }
+
+    sum(2,4)
 
 }
 
