@@ -251,63 +251,61 @@ func main() {
 	//     fmt.Println(arr) // [a b c d]
 	// }
 
-
-    // Slice
+	// Slice
 	f.Println("------------- Slice syntax -------------")
-    // 配列の使用は、シビアなメモリ管理が必要なプログラムなので、それ以外の場面では基本的にはスライスを使用
+	// 配列の使用は、シビアなメモリ管理が必要なプログラムなので、それ以外の場面では基本的にはスライスを使用
 
-    // var slice []string
+	// var slice []string
 
-    slice1 := []string{"a", "b", "c"}
-    f.Println(slice1[0])
+	slice1 := []string{"a", "b", "c"}
+	f.Println(slice1[0])
 
-    // スライス末尾に追加 append()
-    f.Println("---- Slice append() ----")
-    var slice2 []string
-    f.Println("---- Slice append()前 ----")
-    f.Println(slice2)
-    CheckType(slice2)
+	// スライス末尾に追加 append()
+	f.Println("---- Slice append() ----")
+	var slice2 []string
+	f.Println("---- Slice append()前 ----")
+	f.Println(slice2)
+	CheckType(slice2)
 
-    slice2 = append(slice2, "マンボウ")
-    slice2 = append(slice2, "ジンベイザメ")
-    slice2 = append(slice2, "まぐろ")
-    slice2 = append(slice2, "いるか")
+	slice2 = append(slice2, "マンボウ")
+	slice2 = append(slice2, "ジンベイザメ")
+	slice2 = append(slice2, "まぐろ")
+	slice2 = append(slice2, "いるか")
 
-    f.Println("---- Slice append()後 ----")
-    f.Println(slice2)
-    CheckType(slice2)
+	f.Println("---- Slice append()後 ----")
+	f.Println(slice2)
+	CheckType(slice2)
 
-    // rang
-    var RangeCheck[4]string
+	// rang
+	var RangeCheck [4]string
 
-    RangeCheck[0] = "a"
-    RangeCheck[1] = "b"
-    RangeCheck[2] = "c"
-    RangeCheck[3] = "d"
+	RangeCheck[0] = "a"
+	RangeCheck[1] = "b"
+	RangeCheck[2] = "c"
+	RangeCheck[3] = "d"
 
-    f.Println("---- Slice range ----")
-    for i, s :=  range RangeCheck {
-        f.Println(i, s)
-    }
+	f.Println("---- Slice range ----")
+	for i, s := range RangeCheck {
+		f.Println(i, s)
+	}
 
-    // 値の切り出し
-    f.Println("---- Slice 値の切り出し ----")
-    slice3 := []int64{0,1,2,3,4,5,6}
-    f.Println(slice3[0:1])
-    f.Println(slice3[0:2])
-    f.Println(slice3[0:3])
-    f.Println(slice3[:5])
-    f.Println(slice3[5:])
-    f.Println(slice3[:])
-    f.Println(slice3[0:len(slice3)])
+	// 値の切り出し
+	f.Println("---- Slice 値の切り出し ----")
+	slice3 := []int64{0, 1, 2, 3, 4, 5, 6}
+	f.Println(slice3[0:1])
+	f.Println(slice3[0:2])
+	f.Println(slice3[0:3])
+	f.Println(slice3[:5])
+	f.Println(slice3[5:])
+	f.Println(slice3[:])
+	f.Println(slice3[0:len(slice3)])
 
-
-    f.Println(sum1(1,2,3))
+	f.Println(sum1(1, 2, 3))
 }
 
 // Check Type
 func CheckType(t interface{}) {
-    f.Println(reflect.TypeOf(t))
+	f.Println(reflect.TypeOf(t))
 }
 
 // function
@@ -317,11 +315,10 @@ func RetunrsFunc(i, j int) (int, int) {
 	return i, j
 }
 
-
 //  slice
-    func sum1(nums ...int)(result int) {
-        for _, n := range nums {
-            result += n
-        }
-        return
-    }
+func sum1(nums ...int) (result int) {
+	for _, n := range nums {
+		result += n
+	}
+	return
+}
