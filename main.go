@@ -332,7 +332,15 @@ func main() {
         f.Println("OK")
     }
 
-    
+    // 削除
+	f.Println("---- Map delete  ----")
+    delete(month, 1)
+    f.Println(month)
+
+	f.Println("---- Map for syntax  ----")
+    for key, value := range month1 {
+        f.Println("%d %s\n", key, value)
+    }
 }
 
 // Check Type
