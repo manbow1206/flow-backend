@@ -4,8 +4,6 @@ import (
 	f "fmt" // 別名
 )
 
-// var message string = "変数を使用"
-
 func main() {
 
 	// variable
@@ -178,6 +176,15 @@ func main() {
     // 必要な戻り値のみ用意
     x, _ = RetunrsFunc(x, y)
     f.Println(x)
+
+
+    // エラーを返り値に設定
+    // エラー値は最後にするのが慣習、自作エラーパッケージを作成し、それを使用する事も可能
+    // file, err := os.Open("hello world")
+    // if err != nil {
+    //     // エラー処理
+    // }
+    // fileを用いた処理
 
 }
 
