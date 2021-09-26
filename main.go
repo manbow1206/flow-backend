@@ -302,17 +302,26 @@ func main() {
     f.Println(slice3[0:len(slice3)])
 
 
-
-}
-
-// returns Ver
-func RetunrsFunc(i, j int) (int, int) {
-	i = i + 1
-	j = j + 1
-	return i, j
+    f.Println(sum1(1,2,3))
 }
 
 // Check Type
 func CheckType(t interface{}) {
     f.Println(reflect.TypeOf(t))
 }
+
+// function
+func RetunrsFunc(i, j int) (int, int) {
+	i = i + 1
+	j = j + 1
+	return i, j
+}
+
+
+//  slice
+    func sum1(nums ...int)(result int) {
+        for _, n := range nums {
+            result += n
+        }
+        return
+    }
