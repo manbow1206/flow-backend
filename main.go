@@ -210,6 +210,38 @@ func main() {
 
     sum(2,4)
 
+    // 配列 固定長
+	f.Println("---Array syntax---")
+    var arr [4]string
+    arr[0] = "マンボウ"
+    arr[1] = "ジンベイザメ"
+    arr[2] = "イルカ"
+
+    f.Println(arr)
+    f.Println(arr[1])
+    f.Println(arr[2])
+
+
+    // 宣言と同時に配列長を暗黙的に指定
+    arr1 := [4]string{"マンボウ", "ジンベイザメ","いるか","まぐろ"}
+    arr2 := [...]string{"マンボウ", "ジンベイザメ","いるか","まぐろ"}
+
+	f.Println("配列長、直接指定")
+    f.Println(arr1)
+	f.Println("配列長、暗黙指定")
+    f.Println(arr2)
+
+    // 配列長も情報として含む
+    // func CheckArrayLength(arr [4]string) {
+    //     f.Printlna(arr)
+    // }
+    // var arr3 [4]string
+    // var arr4 [4]string
+    // CheckArrayLength(arr3) //ok
+    // CheckArrayLength(arr4) //NG 長さが違う為
+
+
+
 }
 
 // returns Ver
