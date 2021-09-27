@@ -347,7 +347,7 @@ func main() {
 	}
 
 	// ポインター
-	f.Println("---- Pointer Syntax----")
+	f.Println("------------- Pointer syntax -------------")
 
 	var PointerInt int = 10
 	callByValue(PointerInt)
@@ -357,7 +357,7 @@ func main() {
 	f.Println(PointerInt)
 
 	// defer
-	f.Println("---- Defer Syntax----")
+	f.Println("------------- Defer syntax -------------")
 	// file, err := os.Open("./error.go")
 	// if err != nil {
 	//     // エラー処理
@@ -365,7 +365,7 @@ func main() {
 	// defer file.Close()
 
 	// パニック
-	f.Println("---- Panic Syntax----")
+	f.Println("------------- Panic syntax -------------")
 	// エラーを戻り値として表現できない場合や、回復不可能なシステムエラーで大域脱出が必要な場合に使用
 	// 通常は関数の戻り値として、呼び出し側に返す
 	// defer func() {
@@ -386,7 +386,7 @@ func main() {
 	// f.Println(a[i])
 
 	// type
-	f.Println("---- type ----")
+	f.Println("------------- Type syntax -------------")
 
 	var id ID = 3
 	var priority Priority = 5
@@ -398,25 +398,45 @@ func main() {
 	// ProcessTask(priority, id)
 
 	// struct
-	f.Println("---- struct ----")
+	f.Println("------------- Struct syntax -------------")
 	// Rubyのクラスに近い役割
 
 	// 構造体型の宣言
 	// 大文字で始まる場合はpublic、小文字で始まる場合はprivate(モジュール内)
 	type Task struct {
-		ID int
+		ID     int
 		Detail string
-		done bool
+		done   bool
 	}
 
-	var task Task = Task {
-		ID: 1,
+	// 通常の値を生成
+	f.Println("---- Struct 通常使用 ----")
+	var task Task = Task{
+		ID:     1,
 		Detail: "まんぼう",
-		done: true,
+		done:   true,
 	}
 	f.Println(task.ID)
 	f.Println(task.Detail)
 	f.Println(task.done)
+
+	// フィールド名省略
+	f.Println("---- Struct フィールド名省略 ----")
+	var task1 Task = Task{
+		2, "ジンベイザメ", false,
+	}
+
+	f.Println(task1.ID)
+	f.Println(task1.Detail)
+	f.Println(task1.done)
+
+		// ゼロ値
+	f.Println("---- Struct ゼロ値 ----")
+	var task2 Task = Task{}
+	f.Println(task2.ID)
+	f.Println(task2.Detail)
+	f.Println(task2.done)
+
 
 }
 
