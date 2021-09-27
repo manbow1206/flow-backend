@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	f "fmt" // 別名
 	"reflect"
 	// "golang.org/x/text/unicode/norm"
@@ -587,7 +588,7 @@ func main() {
 	// a := int("a")
 
 	// // Type Assertion
-	// f.Println("---- Type conversion Type Assertion----")
+	f.Println("---- Type conversion Type Assertion----")
 	// func Print(value interface{}) {
 	// 	s, ok := value.(string)
 	//    if ok {
@@ -614,6 +615,34 @@ func main() {
 	//         fmt.Printf("value is Stringer: %s\n", v)
 	//     }
 	// }
+
+
+	// JSONパッケージ
+	f.Println("------------- JSON パッケージ -------------")
+	// type Person struct {
+	// 	ID int8
+  //   Name string
+  //   Email string
+  //   Age int
+  //   Address string
+  //   memo string
+	// }
+
+	// person := &Person{
+	// 	        ID: 1,
+  //       Name: "Gopher",
+  //       Email: "gopher@example.org",
+  //       Age: 5,
+  //       Address: "",
+  //       memo: "golang lover",
+	// }
+
+	// b, err := json.Marshal(person)
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+	// f.Println(string(b))
+
 }
 
 // Check Type
