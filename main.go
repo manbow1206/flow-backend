@@ -616,25 +616,24 @@ func main() {
 	//     }
 	// }
 
-
 	// JSONパッケージ
 	f.Println("------------- JSON パッケージ -------------")
 	// type Person struct {
 	// 	ID int8
-  //   Name string
-  //   Email string
-  //   Age int
-  //   Address string
-  //   memo string
+	//   Name string
+	//   Email string
+	//   Age int
+	//   Address string
+	//   memo string
 	// }
 
 	// person := &Person{
 	// 	        ID: 1,
-  //       Name: "Gopher",
-  //       Email: "gopher@example.org",
-  //       Age: 5,
-  //       Address: "",
-  //       memo: "golang lover",
+	//       Name: "Gopher",
+	//       Email: "gopher@example.org",
+	//       Age: 5,
+	//       Address: "",
+	//       memo: "golang lover",
 	// }
 
 	// b, err := json.Marshal(person)
@@ -645,18 +644,16 @@ func main() {
 
 	// タグ付け
 	f.Println("---- JSON Tags ----")
-		// type Person struct {
-			// ID:int `json:"id"`
-  //   Name string `json:"name"`
-  //   Email string `json:"-"`
-  //   Age int `json:"age"`
-  //   Address string
-  //   memo string
+	// type Person struct {
+	// ID:int `json:"id"`
+	//   Name string `json:"name"`
+	//   Email string `json:"-"`
+	//   Age int `json:"age"`
+	//   Address string
+	//   memo string
 	// }
 
-
 }
-
 
 // Check Type
 func CheckType(t interface{}) {
