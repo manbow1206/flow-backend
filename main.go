@@ -492,6 +492,21 @@ func main() {
 	// 	f.Println(stringer.String())
 	// }
 
+	// Print(task)
+
+	// interface{}
+	// どんな型でも格納できる特殊な型。int,string,boolなどと同じ、golangの型名。
+	// どんな型でも格納できるので、受け取りが分からない場合に活用可能。
+	// 演算はできない
+	var interfaceX, interfaceY interface{}
+
+	f.Printf("%#v", interfaceX) // -> nilinterfaceY
+	interfaceX = 1
+	interfaceX = 2.1
+	interfaceY = []int{1,2,3}
+	interfaceY = "hello"
+	interfaceY = 2
+	f.Printf("%#v", interfaceY) // -> nilinterfaceY
 }
 
 // Check Type
