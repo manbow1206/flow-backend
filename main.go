@@ -455,6 +455,20 @@ func main() {
 	// var task4 Task = &Task{done :true}
 	// Finish(task4)
 	// f.Println(task4.done) //true
+
+	// コンストラクタ
+	// コンストラクタにあたる構文がないので、Newで始まる関数を定義し、その内部で構造体を生成するのが通例。
+	// func NewTask(id int, detail string) *Task {
+	// 	task := &Task{
+	// 		ID: id,
+	// 		Detail: detail,
+	// 		done: false,
+	// 	}
+	// 	return task
+	// }
+
+	// task := NewTask(1, "コンストマンボウ")
+	// f.Println("%+v", task)
 }
 
 // Check Type
