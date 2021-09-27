@@ -572,6 +572,24 @@ func main() {
 		Writer
 	}
 
+
+	// Type conversion
+	f.Println("------------- Type conversion -------------")
+
+	// キャスト
+		f.Println("---- Type conversion Cast ----")
+		var castInt8 uint8 = 3
+		var castInt32 = uint32(castInt8)
+		f.Println(castInt32)
+
+		var castString string = "abc"
+		var castByte []byte = []byte(castString)
+		f.Println(castByte)
+
+		// NG
+		// a := int("a")
+
+		
 }
 
 // Check Type
