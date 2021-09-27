@@ -507,6 +507,54 @@ func main() {
 	interfaceY = "hello"
 	interfaceY = 2
 	f.Printf("%#v", interfaceY) // -> nilinterfaceY
+
+	// // 型の埋め込み
+	f.Println("------------- Embed syntax -------------")
+
+	// // TaskにUserを埋め込む
+	// // User 構造体
+	// type User struct {
+	// 	FirstName string
+	// 	LastName string
+	// }
+
+	// func (u *User) FullName() string {
+	// 	fullname := f.Sprintf(
+	// 		"%s %s", u.FirstName, u.LastName)
+	// 	return fullname
+	// }
+
+	// func NewUser(firatName, lastName) *User {
+	// 	return &User {
+	// 		FirstName: sirstName,
+	// 		LastName: lastName,
+	// 	}
+	// }
+
+	// // Task 構造体
+	// type Task struct {
+	// 	ID int
+  //   Detail string
+  //   done bool
+  //   *User // Userを埋め込む
+	// }
+
+	// func NewTask(id int, detail, firstName, lastName string) *Task{
+	// 	task := Task{
+	// 		ID: id,
+	// 		Detail: detail,
+	// 		done: falss,
+	// 		User: NewUser(firstName, lastName)
+	// 	}
+	// 	return task
+	// }
+
+	// taskEmbed := NewTask(1, "まんぼう", "まんぼう", "太郎")
+	// f.Println(task.FirstName) //task構造体からUser構造体のFrisNameを取得
+	// f.Println(task.lastName) //task構造体からUser構造体のLastNameを取得
+	// f.Println(task.FullName()) //task構造体からUser構造体のFullName()メソッドえを取得
+	// f.Println(task.User) //task構造体からUser構造体そのものを取得
+
 }
 
 // Check Type
