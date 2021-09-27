@@ -589,7 +589,21 @@ func main() {
 		// NG
 		// a := int("a")
 
-		
+		// // Type Assertion
+		// f.Println("---- Type conversion Type Assertion----")
+		// func Print(value interface{}) {
+		// 	s, ok := value.(string)
+		//    if ok {
+    //     fmt.Printf("value is string: %s\n", s)
+    // } else {
+    //     fmt.Printf("value is not string\n")
+    // }
+		// }
+
+		// Print("abc")
+		// Print(12)
+
+
 }
 
 // Check Type
