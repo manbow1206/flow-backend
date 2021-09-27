@@ -10,6 +10,12 @@ import (
 type ID int
 type Priority int
 
+type Task struct {
+	ID     int
+	Detail string
+	done   bool
+}
+
 func main() {
 
 	// variable
@@ -430,14 +436,25 @@ func main() {
 	f.Println(task1.Detail)
 	f.Println(task1.done)
 
-		// ゼロ値
+	// ゼロ値
 	f.Println("---- Struct ゼロ値 ----")
 	var task2 Task = Task{}
 	f.Println(task2.ID)
 	f.Println(task2.Detail)
 	f.Println(task2.done)
 
+	// ポイント型
+	// var task3 Task = Task{}
+	// var task3 *Task = &Task{}
 
+	// var task3 Task = Task{done :true}
+	// Finish(task3)
+	// f.Println(task3.done) //falseのまま
+
+	// 構造体の名前の前に&を付けると、構造体の値ではなく、メモリアドレスが変数に格納される。ポインタ型。
+	// var task4 Task = &Task{done :true}
+	// Finish(task4)
+	// f.Println(task4.done) //true
 }
 
 // Check Type
@@ -471,4 +488,9 @@ func callByRef(i *int) {
 
 //type
 func ProcessTask(id ID, priority Priority) {
+}
+
+// 引数にポイント型を指定
+func Finish(task *Task) {
+	task.done = true
 }
