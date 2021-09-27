@@ -503,7 +503,7 @@ func main() {
 	f.Printf("%#v", interfaceX) // -> nilinterfaceY
 	interfaceX = 1
 	interfaceX = 2.1
-	interfaceY = []int{1,2,3}
+	interfaceY = []int{1, 2, 3}
 	interfaceY = "hello"
 	interfaceY = 2
 	f.Printf("%#v", interfaceY) // -> nilinterfaceY
@@ -534,9 +534,9 @@ func main() {
 	// // Task 構造体
 	// type Task struct {
 	// 	ID int
-  //   Detail string
-  //   done bool
-  //   *User // Userを埋め込む
+	//   Detail string
+	//   done bool
+	//   *User // Userを埋め込む
 	// }
 
 	// func NewTask(id int, detail, firstName, lastName string) *Task{
@@ -555,16 +555,14 @@ func main() {
 	// f.Println(task.FullName()) //task構造体からUser構造体のFullName()メソッドえを取得
 	// f.Println(task.User) //task構造体からUser構造体そのものを取得
 
-
-
 	// インターフェース自体の埋め込み
 	f.Println("---- Interface  in Interface ----")
 	type Reader interface {
-	    Read(p []byte) (n int, err error)
+		Read(p []byte) (n int, err error)
 	}
 
 	type Writer interface {
-	    Write(p []byte) (n int, err error)
+		Write(p []byte) (n int, err error)
 	}
 
 	type ReadWriter interface {
@@ -572,38 +570,50 @@ func main() {
 		Writer
 	}
 
-
 	// Type conversion
 	f.Println("------------- Type conversion -------------")
 
 	// キャスト
-		f.Println("---- Type conversion Cast ----")
-		var castInt8 uint8 = 3
-		var castInt32 = uint32(castInt8)
-		f.Println(castInt32)
+	f.Println("---- Type conversion Cast ----")
+	var castInt8 uint8 = 3
+	var castInt32 = uint32(castInt8)
+	f.Println(castInt32)
 
-		var castString string = "abc"
-		var castByte []byte = []byte(castString)
-		f.Println(castByte)
+	var castString string = "abc"
+	var castByte []byte = []byte(castString)
+	f.Println(castByte)
 
-		// NG
-		// a := int("a")
+	// NG
+	// a := int("a")
 
-		// // Type Assertion
-		// f.Println("---- Type conversion Type Assertion----")
-		// func Print(value interface{}) {
-		// 	s, ok := value.(string)
-		//    if ok {
-    //     fmt.Printf("value is string: %s\n", s)
-    // } else {
-    //     fmt.Printf("value is not string\n")
-    // }
-		// }
+	// // Type Assertion
+	// f.Println("---- Type conversion Type Assertion----")
+	// func Print(value interface{}) {
+	// 	s, ok := value.(string)
+	//    if ok {
+	//     fmt.Printf("value is string: %s\n", s)
+	// } else {
+	//     fmt.Printf("value is not string\n")
+	// }
+	// }
 
-		// Print("abc")
-		// Print(12)
+	// Print("abc")
+	// Print(12)
 
+	// 			type Stringer interface {
+	//     String() string
+	// }
 
+	// 	func Print(value interface{}) {
+	//     switch v := value.(type) {
+	//     case string:
+	//         fmt.Printf("value is string: %s\n", v)
+	//     case int:
+	//         fmt.Printf("value is int: %d\n", v)
+	//     case Stringer:
+	//         fmt.Printf("value is Stringer: %s\n", v)
+	//     }
+	// }
 }
 
 // Check Type
