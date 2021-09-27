@@ -444,6 +444,7 @@ func main() {
 	f.Println(task2.done)
 
 	// ポイント型
+	f.Println("---- Struct Pointer ----")
 	// var task3 Task = Task{}
 	// var task3 *Task = &Task{}
 
@@ -457,6 +458,7 @@ func main() {
 	// f.Println(task4.done) //true
 
 	// コンストラクタ
+	f.Println("---- Struct Constructer ----")
 	// コンストラクタにあたる構文がないので、Newで始まる関数を定義し、その内部で構造体を生成するのが通例。
 	// func NewTask(id int, detail string) *Task {
 	// 	task := &Task{
@@ -469,6 +471,27 @@ func main() {
 
 	// task := NewTask(1, "コンストマンボウ")
 	// f.Println("%+v", task)
+
+	// メソッド
+	f.Println("---- Struct Method ----")
+	// Task Structに紐づいた関数(メソッド)
+	// 	func (task Task) String() string {
+	//   str := fmt.Sprintf("%d) %s", task.ID, task.Detail)
+	//   return str
+	// }
+
+	// interface
+	f.Println("------------- Interface syntax -------------")
+	// 宣言
+	// typr Stringer interface {
+	// 	String() string
+	// }
+
+	// 実装
+	// func Print(stringer Stringer) {
+	// 	f.Println(stringer.String())
+	// }
+
 }
 
 // Check Type
@@ -507,4 +530,10 @@ func ProcessTask(id ID, priority Priority) {
 // 引数にポイント型を指定
 func Finish(task *Task) {
 	task.done = true
+}
+
+// メソッド
+func (task Task) String() string {
+	str := f.Sprintf("%d) %s", task.ID, task.Detail)
+	return str
 }
