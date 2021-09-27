@@ -555,6 +555,23 @@ func main() {
 	// f.Println(task.FullName()) //task構造体からUser構造体のFullName()メソッドえを取得
 	// f.Println(task.User) //task構造体からUser構造体そのものを取得
 
+
+
+	// インターフェース自体の埋め込み
+	f.Println("---- Interface  in Interface ----")
+	type Reader interface {
+	    Read(p []byte) (n int, err error)
+	}
+
+	type Writer interface {
+	    Write(p []byte) (n int, err error)
+	}
+
+	type ReadWriter interface {
+		Reader
+		Writer
+	}
+
 }
 
 // Check Type
