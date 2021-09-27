@@ -397,6 +397,26 @@ func main() {
 	// カスタム型指定通りではないのでNG
 	// ProcessTask(priority, id)
 
+	// struct
+	f.Println("---- struct ----")
+	// Rubyのクラスに近い役割
+
+	// 構造体型の宣言
+	// 大文字で始まる場合はpublic、小文字で始まる場合はprivate(モジュール内)
+	type Task struct {
+		ID int
+		Detail string
+		done bool
+	}
+
+	var task Task = Task {
+		ID: 1,
+		Detail: "まんぼう",
+		done: true,
+	}
+	f.Println(task.ID)
+	f.Println(task.Detail)
+	f.Println(task.done)
 
 }
 
