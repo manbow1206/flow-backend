@@ -1,6 +1,7 @@
 package main
 
 import (
+	// "encoding/json"
 	"encoding/json"
 	f "fmt" // 別名
 	"reflect"
@@ -652,6 +653,17 @@ func main() {
 	//   Address string
 	//   memo string
 	// }
+
+	// Unmarshal()
+	f.Println("---- Unmarshal ----")
+	// var person Person
+	// b := []byte(`{"id":1,"name":"Gopher","age":5}`)
+	// err := json.Unmarshal(b, &person)
+	// タグと紐づいて、構造体に代入
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+	// fmt.Println(person) // {1 Gopher 5 }
 
 }
 
