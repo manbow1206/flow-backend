@@ -643,7 +643,20 @@ func main() {
 	// }
 	// f.Println(string(b))
 
+	// タグ付け
+	f.Println("---- JSON Tags ----")
+		// type Person struct {
+			// ID:int `json:"id"`
+  //   Name string `json:"name"`
+  //   Email string `json:"-"`
+  //   Age int `json:"age"`
+  //   Address string
+  //   memo string
+	// }
+
+
 }
+
 
 // Check Type
 func CheckType(t interface{}) {
