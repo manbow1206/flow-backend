@@ -1,11 +1,14 @@
 package main
 
 import (
-	"errors"
 	f "fmt" // 別名
 	"reflect"
 	// "golang.org/x/text/unicode/norm"
 )
+
+// type
+type ID int
+type Priority int
 
 func main() {
 
@@ -319,70 +322,82 @@ func main() {
 		2: "February",
 	}
 
-    f.Println(month1)
+	f.Println(month1)
 	CheckType(month1)
 
-    // 操作
+	// 操作
 	f.Println("---- Map operation  ----")
-    jan := month[1]
-    f.Println(jan)
+	jan := month[1]
+	f.Println(jan)
 
-    test, ok := month[1]
-    f.Println(test)
-    if ok {
-        f.Println("OK")
-    }
+	test, ok := month[1]
+	f.Println(test)
+	if ok {
+		f.Println("OK")
+	}
 
-    // 削除
+	// 削除
 	f.Println("---- Map delete  ----")
-    delete(month, 1)
-    f.Println(month)
+	delete(month, 1)
+	f.Println(month)
 
 	f.Println("---- Map for syntax  ----")
-    for key, value := range month1 {
-        f.Println("%d %s\n", key, value)
-    }
+	for key, value := range month1 {
+		f.Println("%d %s\n", key, value)
+	}
 
-    // ポインター
+	// ポインター
 	f.Println("---- Pointer Syntax----")
 
-    var PointerInt int = 10
-    callByValue(PointerInt)
-    f.Println(PointerInt)
+	var PointerInt int = 10
+	callByValue(PointerInt)
+	f.Println(PointerInt)
 
-    callByRef(&PointerInt)
-    f.Println(PointerInt)
+	callByRef(&PointerInt)
+	f.Println(PointerInt)
 
-
-    // defer
+	// defer
 	f.Println("---- Defer Syntax----")
-    // file, err := os.Open("./error.go")
-    // if err != nil {
-    //     // エラー処理
-    // }
-    // defer file.Close()
+	// file, err := os.Open("./error.go")
+	// if err != nil {
+	//     // エラー処理
+	// }
+	// defer file.Close()
 
-    // パニック
+	// パニック
 	f.Println("---- Panic Syntax----")
-    // エラーを戻り値として表現できない場合や、回復不可能なシステムエラーで大域脱出が必要な場合に使用
-    // 通常は関数の戻り値として、呼び出し側に返す
-    // defer func() {
-    //     err := recover() // パニックが起きた際のエラーを取得
-    //     if err != nil {
-    //         log.Fatal(err)
-    //     }
-    // }()
+	// エラーを戻り値として表現できない場合や、回復不可能なシステムエラーで大域脱出が必要な場合に使用
+	// 通常は関数の戻り値として、呼び出し側に返す
+	// defer func() {
+	//     err := recover() // パニックが起きた際のエラーを取得
+	//     if err != nil {
+	//         log.Fatal(err)
+	//     }
+	// }()
 
-    // a := []int{1,2,3,4}
-    // f.Println(a) //パニックが発生
+	// a := []int{1,2,3,4}
+	// f.Println(a) //パニックが発生
+
+	// panic()
+	// a := []int{1,2,3}
+	// for i := 0; i < 10; i++ {
+	//     panic(errors,New("Index out of range"))
+	// }
+	// f.Println(a[i])
+
+	// type
+	f.Println("---- type ----")
+
+	var id ID = 3
+	var priority Priority = 5
+
+	// カスタム型指定通りなのでOK
+	ProcessTask(id, priority)
+
+	// カスタム型指定通りではないのでNG
+	// ProcessTask(priority, id)
 
 
-    // panic()
-    // a := []int{1,2,3}
-    // for i := 0; i < 10; i++ {
-    //     panic(errors,New("Index out of range"))
-    // }
-    // f.Println(a[i])
 }
 
 // Check Type
@@ -407,9 +422,13 @@ func sum1(nums ...int) (result int) {
 
 // Ponter
 func callByValue(i int) {
-    i = 20
+	i = 20
 }
 
 func callByRef(i *int) {
-    *i = 20
+	*i = 20
+}
+
+//type
+func ProcessTask(id ID, priority Priority) {
 }
