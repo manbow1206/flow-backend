@@ -4,12 +4,13 @@ import (
 	// "encoding/json"
 	// "encoding/json"
 	"encoding/json"
+	"fmt"
 	f "fmt" // 別名
 	"io/ioutil"
 	"log"
+	"net/http"
 	"os"
 	"reflect"
-	"net/http"
 	// "golang.org/x/text/unicode/norm"
 )
 
@@ -22,6 +23,11 @@ type Task struct {
 	Detail string
 	done   bool
 }
+
+	type JsonPerson struct {
+		ID int `jspm:"id"`
+		Name string `json:"name"`
+	}
 
 func main() {
 
@@ -781,10 +787,20 @@ func main() {
 
 		f.Println(messageReadFile)
 
-		// net,httpパッケージ
+	// net,httpパッケージ
 	f.Println("------------- net,http package -------------")
+	// http.HandleFunc("/", IndexHandler)
+	// http.ListenAndServe(":4000", nil)
+
+	// JSON/HTMLパッケージ
+	// POST
 	http.HandleFunc("/", IndexHandler)
+	http.HandleFunc("/persons", PersonHandler)
 	http.ListenAndServe(":4000", nil)
+
+
+
+
 }
 
 // Check Type
@@ -837,3 +853,34 @@ func IndexHandler(w http.ResponseWriter,
 
     f.Fprint(w, "APIを返しているまんぼう")
 }
+
+func PersonHandler (w http.ResponseWriter,
+	r *http.Request) {
+		defer r.Body.Close()
+
+		if r.Method == "POST" {
+			// リクエストボディをJSONに変換
+			var jsonPerson JsonPerson
+			decoder := json.NewDecoder(r.Body)
+			errJson := decoder.Decode(&jsonPerson)
+			if errJson != nil {
+				log.Fatal(errJson)
+			}
+
+			//ファイル名を{id}.txtとする
+			filename := fmt.Sprintf("%d.txt", jsonPerson.ID)
+			jsonFile, err := os.Create(filename)
+			if err != nil {
+				log.Fatal(err)
+			}
+			defer jsonFile.Close()
+
+			// ファイルにNameを書き込む
+			 _, err = jsonFile.WriteString(jsonPerson.Name)
+			 if err != nil {
+				log.Fatal(err)
+			}
+			w.WriteHeader(http.StatusCreated)
+
+		}
+	}
