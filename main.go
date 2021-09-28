@@ -27,10 +27,10 @@ type Task struct {
 	done   bool
 }
 
-	type JsonPerson struct {
-		ID int `jspm:"id"`
-		Name string `json:"name"`
-	}
+type JsonPerson struct {
+	ID   int    `jspm:"id"`
+	Name string `json:"name"`
+}
 
 func main() {
 
@@ -777,18 +777,18 @@ func main() {
 	// beforeWriteFile := []byte("Hello world\n")
 	// errWriteFile := ioutil.WriteFile("./file.txt", beforeWriteFile, 0666)
 
-		hello := []byte("hello\n")
-		errHello := ioutil.WriteFile("./file.txt", hello, 0666)
-		if errHello != nil {
-			log.Fatal(errHello)
-		}
+	hello := []byte("hello\n")
+	errHello := ioutil.WriteFile("./file.txt", hello, 0666)
+	if errHello != nil {
+		log.Fatal(errHello)
+	}
 
-		messageReadFile, errReadFile := ioutil.ReadFile("./file.txt")
-		if errReadFile != nil {
-			log.Fatal(errReadFile)
-		}
+	messageReadFile, errReadFile := ioutil.ReadFile("./file.txt")
+	if errReadFile != nil {
+		log.Fatal(errReadFile)
+	}
 
-		f.Println(messageReadFile)
+	f.Println(messageReadFile)
 
 	// net,httpパッケージ
 	f.Println("------------- net,http package -------------")
@@ -800,9 +800,6 @@ func main() {
 	http.HandleFunc("/", IndexHandler)
 	http.HandleFunc("/persons", PersonHandler)
 	http.ListenAndServe(":4000", nil)
-
-
-
 
 }
 
@@ -852,59 +849,59 @@ func (task Task) String() string {
 
 // net,http
 func IndexHandler(w http.ResponseWriter,
-    r *http.Request) {
+	r *http.Request) {
 
-    f.Fprint(w, "APIを返しているまんぼう")
+	f.Fprint(w, "APIを返しているまんぼう")
 }
 
 var t = template.Must(template.ParseFiles("index.html"))
 
-func PersonHandler (w http.ResponseWriter,
+func PersonHandler(w http.ResponseWriter,
 	r *http.Request) {
-		defer r.Body.Close()
+	defer r.Body.Close()
 
-		if r.Method == "POST" {
-			// リクエストボディをJSONに変換
-			var jsonPerson JsonPerson
-			decoder := json.NewDecoder(r.Body)
-			errJson := decoder.Decode(&jsonPerson)
-			if errJson != nil {
-				log.Fatal(errJson)
-			}
-
-			//ファイル名を{id}.txtとする
-			filename := fmt.Sprintf("%d.txt", jsonPerson.ID)
-			jsonFile, err := os.Create(filename)
-			if err != nil {
-				log.Fatal(err)
-			}
-			defer jsonFile.Close()
-
-			// ファイルにNameを書き込む
-			 _, err = jsonFile.WriteString(jsonPerson.Name)
-			 if err != nil {
-				log.Fatal(err)
-			}
-			w.WriteHeader(http.StatusCreated)
-
-		} else if r.Method == "GET" {
-			id, err := strconv.Atoi(r.URL.Query().Get("id"))
-			if err != nil {
-				log.Fatal(err)
-			}
-
-			// filename := fmt.Sprint("%d.txt", id)
-			filename := fmt.Sprintf("%d.txt", id)
-			b, err := ioutil.ReadFile(filename)
-			if err != nil {
-				log.Fatal(err)
-			}
-
-			person := JsonPerson{
-				ID: id,
-				Name: string(b),
-			}
-
-			t.Execute(w, person)
+	if r.Method == "POST" {
+		// リクエストボディをJSONに変換
+		var jsonPerson JsonPerson
+		decoder := json.NewDecoder(r.Body)
+		errJson := decoder.Decode(&jsonPerson)
+		if errJson != nil {
+			log.Fatal(errJson)
 		}
+
+		//ファイル名を{id}.txtとする
+		filename := fmt.Sprintf("%d.txt", jsonPerson.ID)
+		jsonFile, err := os.Create(filename)
+		if err != nil {
+			log.Fatal(err)
+		}
+		defer jsonFile.Close()
+
+		// ファイルにNameを書き込む
+		_, err = jsonFile.WriteString(jsonPerson.Name)
+		if err != nil {
+			log.Fatal(err)
+		}
+		w.WriteHeader(http.StatusCreated)
+
+	} else if r.Method == "GET" {
+		id, err := strconv.Atoi(r.URL.Query().Get("id"))
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		// filename := fmt.Sprint("%d.txt", id)
+		filename := fmt.Sprintf("%d.txt", id)
+		b, err := ioutil.ReadFile(filename)
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		person := JsonPerson{
+			ID:   id,
+			Name: string(b),
+		}
+
+		t.Execute(w, person)
 	}
+}
