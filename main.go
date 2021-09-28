@@ -5,6 +5,7 @@ import (
 	// "encoding/json"
 	"encoding/json"
 	f "fmt" // 別名
+	"io/ioutil"
 	"log"
 	"os"
 	"reflect"
@@ -752,6 +753,32 @@ func main() {
 
 	f.Println(person1)
 
+	// io,ioutilパッケージ
+	f.Println("------------- io,ioutil syntax -------------")
+
+	// 全体の読み出し
+	f.Println("---- io,ioutil 全体の呼び出し ----")
+	// beforeFileAll, _ := os.Open("./file.txt")
+	// fileAll, err := ioutil.ReadAll(beforeFileAll)
+
+	// ファイルの読み書き
+	// messageRead, err := ioutil.ReadFile("./file.txt")
+
+	// beforeWriteFile := []byte("Hello world\n")
+	// errWriteFile := ioutil.WriteFile("./file.txt", beforeWriteFile, 0666)
+
+		hello := []byte("hello\n")
+		errHello := ioutil.WriteFile("./file.txt", hello, 0666)
+		if errHello != nil {
+			log.Fatal(errHello)
+		}
+
+		messageReadFile, errReadFile := ioutil.ReadFile("./file.txt")
+		if errReadFile != nil {
+			log.Fatal(errReadFile)
+		}
+
+		f.Println(messageReadFile)
 }
 
 // Check Type
