@@ -3,6 +3,7 @@ package main
 import (
 	// "encoding/json"
 	// "encoding/json"
+	"encoding/json"
 	f "fmt" // 別名
 	"log"
 	"os"
@@ -621,14 +622,14 @@ func main() {
 
 	// JSONパッケージ
 	f.Println("------------- JSON パッケージ -------------")
-	// type Person struct {
-	// 	ID int8
-	//   Name string
-	//   Email string
-	//   Age int
-	//   Address string
-	//   memo string
-	// }
+	type Person struct {
+		ID      int8
+		Name    string
+		Email   string
+		Age     int
+		Address string
+		memo    string
+	}
 
 	// person := &Person{
 	// 	        ID: 1,
@@ -681,28 +682,54 @@ func main() {
 	f.Println("---- os,io ファイルへの書き込み----")
 	fileWritten := []byte("hello world\n")
 
-	 _, err = file.Write(fileWritten)
-	 if err != nil {
-		 log.Fatal(err)
-	 }
+	_, err = file.Write(fileWritten)
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	// ファイルからの読み出し
-	f.Println("---- os,io ファイルからの読み出し----")
-	openFile, err := os.Open("./file.txt")
-	if err != nil {
-		 log.Fatal(err)
+	// f.Println("---- os,io ファイルからの読み出し----")
+	// openFile, err := os.Open("./file.txt")
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+	// defer openFile.Close()
+
+	// fileReading := make([]byte, 12)
+
+	// _, err1 := file.Read(fileReading)
+	// if err1 != nil {
+	// 	log.Fatal(err)
+	// }
+
+	// f.Print(string(fileReading))
+
+	// JSONファイルの読み出し
+	f.Println("---- os,io JSONファイルからの読み出し----")
+
+	person := &Person{
+		ID:      1,
+		Name:    "Gopher",
+		Email:   "gopher@example.org",
+		Age:     5,
+		Address: "",
+		memo:    "golang lover",
 	}
-	defer openFile.Close()
 
-	fileReading := make([]byte, 12)
+	jsonFile, err3 := os.Create("./person.json")
 
- 	_, err1 := file.Read(fileReading)
-	 if err1 != nil {
-		 log.Fatal(err)
-	 }
+	if err3 != nil {
+		log.Fatal(err3)
+	}
 
-		 f.Print(string(fileReading))
+	defer file.Close()
 
+	encoder := json.NewEncoder(jsonFile)
+
+	err = encoder.Encode(person)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 // Check Type
