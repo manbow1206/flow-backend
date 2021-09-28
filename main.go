@@ -2,8 +2,10 @@ package main
 
 import (
 	// "encoding/json"
-	"encoding/json"
+	// "encoding/json"
 	f "fmt" // 別名
+	"log"
+	"os"
 	"reflect"
 	// "golang.org/x/text/unicode/norm"
 )
@@ -23,7 +25,6 @@ func main() {
 	// variable
 	f.Println("---variable syntax---")
 	// var message string = "変数を使用"
-
 	// 複数変数宣言
 	// var foo, bar, buz = "foo", "bar", "buz"
 	var (
@@ -69,6 +70,7 @@ func main() {
 	} else if a < b {
 		f.Println("a is smaller than b")
 	} else {
+
 		f.Println("a equals b")
 	}
 
@@ -664,6 +666,16 @@ func main() {
 	// 	log.Fatal(err)
 	// }
 	// fmt.Println(person) // {1 Gopher 5 }
+
+	// os,ioパッケージ
+	f.Println("------------- os,io syntax -------------")
+	// ファイルの生成
+	f.Println("---- os,io ファイル作成----")
+	file, err := os.Create("./file.txt")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer file.Close()
 
 }
 
