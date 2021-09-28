@@ -677,6 +677,15 @@ func main() {
 	}
 	defer file.Close()
 
+	// ファイルへの書き込み
+	f.Println("---- os,io ファイルへの書き込み----")
+	fileWritten := []byte("hello world\n")
+
+	 _, err = file.Write(fileWritten)
+	 if err != nil {
+		 log.Fatal(err)
+	 }
+
 }
 
 // Check Type
