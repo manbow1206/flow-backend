@@ -705,7 +705,7 @@ func main() {
 	// f.Print(string(fileReading))
 
 	// JSONファイルの読み出し
-	f.Println("---- os,io JSONファイルからの読み出し----")
+	f.Println("---- os,io 構造体からJSONへ変換----")
 
 	person := &Person{
 		ID:      1,
@@ -730,6 +730,28 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	// JSONファイルの読み出し
+	f.Println("---- os,io JSONからの構造体へ変換----")
+
+	file, err4 := os.Open("./person.json")
+	if err4 != nil {
+		log.Fatal(err4)
+	}
+	defer file.Close()
+
+	var person1 Person
+
+	decode := json.NewDecoder(file)
+
+	err = decode.Decode(&person1)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	f.Println(person1)
+
 }
 
 // Check Type
