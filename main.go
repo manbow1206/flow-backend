@@ -6,11 +6,14 @@ import (
 	"encoding/json"
 	"fmt"
 	f "fmt" // 別名
+	"html/template"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
+	// "path/filepath"
 	"reflect"
+	"strconv"
 	// "golang.org/x/text/unicode/norm"
 )
 
@@ -854,6 +857,8 @@ func IndexHandler(w http.ResponseWriter,
     f.Fprint(w, "APIを返しているまんぼう")
 }
 
+var t = template.Must(template.ParseFiles("index.html"))
+
 func PersonHandler (w http.ResponseWriter,
 	r *http.Request) {
 		defer r.Body.Close()
@@ -882,5 +887,24 @@ func PersonHandler (w http.ResponseWriter,
 			}
 			w.WriteHeader(http.StatusCreated)
 
+		} else if r.Method == "GET" {
+			id, err := strconv.Atoi(r.URL.Query().Get("id"))
+			if err != nil {
+				log.Fatal(err)
+			}
+
+			// filename := fmt.Sprint("%d.txt", id)
+			filename := fmt.Sprintf("%d.txt", id)
+			b, err := ioutil.ReadFile(filename)
+			if err != nil {
+				log.Fatal(err)
+			}
+
+			person := JsonPerson{
+				ID: id,
+				Name: string(b),
+			}
+
+			t.Execute(w, person)
 		}
 	}
