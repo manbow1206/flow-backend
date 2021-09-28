@@ -686,6 +686,23 @@ func main() {
 		 log.Fatal(err)
 	 }
 
+	// ファイルからの読み出し
+	f.Println("---- os,io ファイルからの読み出し----")
+	openFile, err := os.Open("./file.txt")
+	if err != nil {
+		 log.Fatal(err)
+	}
+	defer openFile.Close()
+
+	fileReading := make([]byte, 12)
+
+ 	_, err1 := file.Read(fileReading)
+	 if err1 != nil {
+		 log.Fatal(err)
+	 }
+
+		 f.Print(string(fileReading))
+
 }
 
 // Check Type
