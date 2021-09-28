@@ -856,6 +856,7 @@ func IndexHandler(w http.ResponseWriter,
 
 var t = template.Must(template.ParseFiles("index.html"))
 
+// APIリクエストハンドラー
 func PersonHandler(w http.ResponseWriter,
 	r *http.Request) {
 	defer r.Body.Close()
