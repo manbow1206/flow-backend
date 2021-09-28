@@ -9,6 +9,7 @@ import (
 	"log"
 	"os"
 	"reflect"
+	"net/http"
 	// "golang.org/x/text/unicode/norm"
 )
 
@@ -779,6 +780,11 @@ func main() {
 		}
 
 		f.Println(messageReadFile)
+
+		// net,httpパッケージ
+	f.Println("------------- net,http package -------------")
+	http.HandleFunc("/", IndexHandler)
+	http.ListenAndServe(":4000", nil)
 }
 
 // Check Type
@@ -823,4 +829,11 @@ func Finish(task *Task) {
 func (task Task) String() string {
 	str := f.Sprintf("%d) %s", task.ID, task.Detail)
 	return str
+}
+
+// net,http
+func IndexHandler(w http.ResponseWriter,
+    r *http.Request) {
+
+    f.Fprint(w, "APIを返しているまんぼう")
 }
