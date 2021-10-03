@@ -797,9 +797,91 @@ func main() {
 
 	// JSON/HTMLパッケージ
 	// POST
-	http.HandleFunc("/", IndexHandler)
-	http.HandleFunc("/persons", PersonHandler)
-	http.ListenAndServe(":4000", nil)
+	// http.HandleFunc("/", IndexHandler)
+	// http.HandleFunc("/persons", PersonHandler)
+	// http.ListenAndServe(":4000", nil)
+
+// Goroutin
+f.Println("------------- Goroutin -------------")
+
+urls := []string{
+		"http://example.com",
+		"http://example.net",
+		"http://example.org",
+		"http://example.com",
+		"http://example.net",
+		"http://example.org",
+		"http://example.com",
+		"http://example.net",
+		"http://example.org",
+		"http://example.com",
+		"http://example.net",
+		"http://example.org",
+		"http://example.com",
+		"http://example.net",
+		"http://example.org",		"http://example.com",
+		"http://example.net",
+		"http://example.org",		"http://example.com",
+		"http://example.net",
+		"http://example.org",		"http://example.com",
+		"http://example.net",
+		"http://example.org",		"http://example.com",
+		"http://example.net",
+		"http://example.org",		"http://example.com",
+		"http://example.net",
+		"http://example.org",		"http://example.com",
+		"http://example.net",
+		"http://example.org",		"http://example.com",
+		"http://example.net",
+		"http://example.org",		"http://example.com",
+		"http://example.net",
+		"http://example.org",		"http://example.com",
+		"http://example.net",
+		"http://example.org",		"http://example.com",
+		"http://example.net",
+		"http://example.org",		"http://example.com",
+		"http://example.net",
+		"http://example.org",		"http://example.com",
+		"http://example.net",
+		"http://example.org",		"http://example.com",
+		"http://example.net",
+		"http://example.org",		"http://example.com",
+		"http://example.net",
+		"http://example.org",		"http://example.com",
+		"http://example.net",
+		"http://example.org",		"http://example.com",
+		"http://example.net",
+		"http://example.org",		"http://example.com",
+		"http://example.net",
+		"http://example.org",		"http://example.com",
+		"http://example.net",
+		"http://example.org",		"http://example.com",
+		"http://example.net",
+		"http://example.org",
+	}
+
+	// goroutinを使用しない同期処理
+	// for  _, url := range urls {
+	// 	res, err := http.Get(url)
+	// 	if err != nil {
+	// 		log.Fatal(err)
+	// 	}
+	// 	defer res.Body.Close()
+	// 	f.Println(url, res.Status)
+	// }
+
+	// goroutinを使用した非同期処理
+	for  _, url := range urls {
+		go func(url string) {
+			resGoroutine, errGoroutine := http.Get(url)
+			if err != nil {
+				log.Fatal(errGoroutine)
+			}
+			defer resGoroutine.Body.Close()
+			f.Println(url, resGoroutine.Status)
+		}(url)
+		// time.Sleep(time.Second)
+	}
 
 }
 
