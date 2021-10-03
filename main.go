@@ -11,6 +11,8 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"sync"
+
 	// "path/filepath"
 	"reflect"
 	"strconv"
@@ -801,10 +803,10 @@ func main() {
 	// http.HandleFunc("/persons", PersonHandler)
 	// http.ListenAndServe(":4000", nil)
 
-// Goroutin
-f.Println("------------- Goroutin -------------")
+	// Goroutin
+	f.Println("------------- Goroutin -------------")
 
-urls := []string{
+	urls := []string{
 		"http://example.com",
 		"http://example.net",
 		"http://example.org",
@@ -819,43 +821,43 @@ urls := []string{
 		"http://example.org",
 		"http://example.com",
 		"http://example.net",
-		"http://example.org",		"http://example.com",
+		"http://example.org", "http://example.com",
 		"http://example.net",
-		"http://example.org",		"http://example.com",
+		"http://example.org", "http://example.com",
 		"http://example.net",
-		"http://example.org",		"http://example.com",
+		"http://example.org", "http://example.com",
 		"http://example.net",
-		"http://example.org",		"http://example.com",
+		"http://example.org", "http://example.com",
 		"http://example.net",
-		"http://example.org",		"http://example.com",
+		"http://example.org", "http://example.com",
 		"http://example.net",
-		"http://example.org",		"http://example.com",
+		"http://example.org", "http://example.com",
 		"http://example.net",
-		"http://example.org",		"http://example.com",
+		"http://example.org", "http://example.com",
 		"http://example.net",
-		"http://example.org",		"http://example.com",
+		"http://example.org", "http://example.com",
 		"http://example.net",
-		"http://example.org",		"http://example.com",
+		"http://example.org", "http://example.com",
 		"http://example.net",
-		"http://example.org",		"http://example.com",
+		"http://example.org", "http://example.com",
 		"http://example.net",
-		"http://example.org",		"http://example.com",
+		"http://example.org", "http://example.com",
 		"http://example.net",
-		"http://example.org",		"http://example.com",
+		"http://example.org", "http://example.com",
 		"http://example.net",
-		"http://example.org",		"http://example.com",
+		"http://example.org", "http://example.com",
 		"http://example.net",
-		"http://example.org",		"http://example.com",
+		"http://example.org", "http://example.com",
 		"http://example.net",
-		"http://example.org",		"http://example.com",
+		"http://example.org", "http://example.com",
 		"http://example.net",
-		"http://example.org",		"http://example.com",
+		"http://example.org", "http://example.com",
 		"http://example.net",
-		"http://example.org",		"http://example.com",
+		"http://example.org", "http://example.com",
 		"http://example.net",
-		"http://example.org",		"http://example.com",
+		"http://example.org", "http://example.com",
 		"http://example.net",
-		"http://example.org",		"http://example.com",
+		"http://example.org", "http://example.com",
 		"http://example.net",
 		"http://example.org",
 	}
@@ -871,17 +873,38 @@ urls := []string{
 	// }
 
 	// goroutinを使用した非同期処理
-	for  _, url := range urls {
+	// for  _, url := range urls {
+	// 	go func(url string) {
+	// 		resGoroutine, errGoroutine := http.Get(url)
+	// 		if err != nil {
+	// 			log.Fatal(errGoroutine)
+	// 		}
+	// 		defer resGoroutine.Body.Close()
+	// 		f.Println(url, resGoroutine.Status)
+	// 	}(url)
+	// 	// time.Sleep(time.Second)
+	// }
+
+	// syncWaitGroup
+	f.Println("---- syncWaitGroup ----")
+	wait := new(sync.WaitGroup)
+
+	for _, url := range urls {
+		// WaitGroupに追加
+		wait.Add(1)
 		go func(url string) {
-			resGoroutine, errGoroutine := http.Get(url)
+			res, err := http.Get(url)
 			if err != nil {
-				log.Fatal(errGoroutine)
+				log.Fatal(err)
 			}
-			defer resGoroutine.Body.Close()
-			f.Println(url, resGoroutine.Status)
+			defer res.Body.Close()
+			f.Println(url, res.Status)
+			// WaitGroupから削除
+			wait.Done()
 		}(url)
-		// time.Sleep(time.Second)
 	}
+
+	wait.Wait()
 
 }
 
