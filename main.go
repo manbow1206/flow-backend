@@ -982,6 +982,42 @@ func main() {
 	// }()
 	// ch <- "a" //1秒後にデータが読み出されるまでのブロック
 
+	// バッファありチャネル
+	ch := make(chan string, 3)
+	go func() {
+		time.Sleep(time.Second)
+		<-ch // 1秒後にデータを読み出す
+	}()
+	ch <- "a"
+	ch <- "b"
+	ch <- "c"
+	ch <- "d"
+
+	// goroutine 同時起動数制御
+	// func getStatus(urls []string) <-chan string {
+	// 	statusChan := make(chan string, 3)
+	// 	// バッファを5にして生成
+	// 	limit := make(chan struct{}, 5)
+	// 	go func() {
+	// 		for _, url := range urls{
+	// 			select {
+	// 			case limit <- empty:
+	// 				// limitに書き込みが可能な場合は取得処理を実施
+	// 				go func(url string) {
+	// 					res, err := http.Get(url)
+	// 					if err != nil {
+	// 						log.Fatal(err)
+	// 					}
+	// 					statusChan <- res.Status
+	// 					<-limit
+	// 				}(url)
+	// 			}
+	// 		}
+	// 	}()
+	// 	return statusChan
+	// }
+	
+
 }
 
 // Check Type
