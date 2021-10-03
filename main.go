@@ -930,40 +930,57 @@ func main() {
 
 	// select文を用いたイベント制御
 	f.Println("---- select Event Handring----")
-// 	ch1 := make(chan string)
-// 	ch2 := make(chan string)
-// 	for {
-// 	select {
-// 	case c1 := <- ch1:
-// 		// ch1からデータを読み出したときに実行
-// 	case c2 := <- ch2:
-// 		// ch2からデータを読み出したときに実行
-// 	case ch2 <- "c":
-// 		// ch2からデータを書き込んだときに実行
-// 	default:
-// 		// caseが実行されなかった時場合に実行
-// 	}
-// }
+	// 	ch1 := make(chan string)
+	// 	ch2 := make(chan string)
+	// 	for {
+	// 	select {
+	// 	case c1 := <- ch1:
+	// 		// ch1からデータを読み出したときに実行
+	// 	case c2 := <- ch2:
+	// 		// ch2からデータを読み出したときに実行
+	// 	case ch2 <- "c":
+	// 		// ch2からデータを書き込んだときに実行
+	// 	default:
+	// 		// caseが実行されなかった時場合に実行
+	// 	}
+	// }
 
-// タイムアウト
-// timeout := time.After(time.Second)
-// urls1 := []string {
-// 	"http://example.org",
-// 	"http://example.net",
-// 	"http://example.org",
-// }
-// statusChan := getStatus(urls1)
-// LOOP:
-//  for{
-// 	 select {
-// 	 case status := statusChan:
-// 		f.Println(status)
-// 	 case <- timeout:
-// 		break LOOP
-// 	 }
-//  }
+	// タイムアウト
+	// timeout := time.After(time.Second)
+	// urls1 := []string {
+	// 	"http://example.org",
+	// 	"http://example.net",
+	// 	"http://example.org",
+	// }
+	// statusChan := getStatus(urls1)
+	// LOOP:
+	//  for{
+	// 	 select {
+	// 	 case status := statusChan:
+	// 		f.Println(status)
+	// 	 case <- timeout:
+	// 		break LOOP
+	// 	 }
+	//  }
 
+	// ChanelBuffer
+	f.Println("------------- ChanelBuffer -------------")
 
+	// // バッファなしチャネル
+	// f.Println("---- no buffer Chanel ----")
+	// ch := make(chan string)
+	// go func() {
+	// 	time.Sleep(time.Second)
+	// 	ch <- "a" //1秒後にデータを書き込む
+	// }()
+	// <-ch //1秒後にデータが書き込まれるまでのブロック
+
+	// ch := make(chan string)
+	// go func() {
+	// 	time.Sleep(time.Second)
+	// 	<-ch //1秒後にデータを読み出す
+	// }()
+	// ch <- "a" //1秒後にデータが読み出されるまでのブロック
 
 }
 
