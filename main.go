@@ -11,11 +11,14 @@ import (
 	"log"
 	"net/http"
 	"os"
+
 	// "sync"
 
 	// "path/filepath"
 	"reflect"
 	"strconv"
+
+	"golang.org/x/text/cases"
 	// "golang.org/x/text/unicode/norm"
 )
 
@@ -924,6 +927,24 @@ func main() {
 	for i := 0; i < len(urls); i++ {
 		f.Println(<-statusChan)
 	}
+
+	// select文を用いたイベント制御
+	f.Println("---- select Event Handring----")
+// 	ch1 := make(chan string)
+// 	ch2 := make(chan string)
+// 	for {
+// 	select {
+// 	case c1 := <- ch1:
+// 		// ch1からデータを読み出したときに実行
+// 	case c2 := <- ch2:
+// 		// ch2からデータを読み出したときに実行
+// 	case ch2 <- "c":
+// 		// ch2からデータを書き込んだときに実行
+// 	default:
+// 		// caseが実行されなかった時場合に実行
+// 	}
+// }
+
 
 }
 
