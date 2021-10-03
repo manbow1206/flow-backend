@@ -11,14 +11,14 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"time"
 
 	// "sync"
 
 	// "path/filepath"
 	"reflect"
 	"strconv"
-
-	"golang.org/x/text/cases"
+	// "golang.org/x/text/cases"
 	// "golang.org/x/text/unicode/norm"
 )
 
@@ -944,6 +944,25 @@ func main() {
 // 		// caseが実行されなかった時場合に実行
 // 	}
 // }
+
+// タイムアウト
+// timeout := time.After(time.Second)
+// urls1 := []string {
+// 	"http://example.org",
+// 	"http://example.net",
+// 	"http://example.org",
+// }
+// statusChan := getStatus(urls1)
+// LOOP:
+//  for{
+// 	 select {
+// 	 case status := statusChan:
+// 		f.Println(status)
+// 	 case <- timeout:
+// 		break LOOP
+// 	 }
+//  }
+
 
 
 }
