@@ -11,7 +11,7 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"sync"
+	// "sync"
 
 	// "path/filepath"
 	"reflect"
@@ -887,24 +887,43 @@ func main() {
 
 	// syncWaitGroup
 	f.Println("---- syncWaitGroup ----")
-	wait := new(sync.WaitGroup)
+	// wait := new(sync.WaitGroup)
 
+	// for _, url := range urls {
+	// 	// WaitGroupに追加
+	// 	wait.Add(1)
+	// 	go func(url string) {
+	// 		res, err := http.Get(url)
+	// 		if err != nil {
+	// 			log.Fatal(err)
+	// 		}
+	// 		defer res.Body.Close()
+	// 		f.Println(url, res.Status)
+	// 		// WaitGroupから削除
+	// 		wait.Done()
+	// 	}(url)
+	// }
+
+	// wait.Wait()
+
+	// Chanel
+	f.Println("---- Chanel ----")
+	statusChan := make(chan string)
 	for _, url := range urls {
-		// WaitGroupに追加
-		wait.Add(1)
 		go func(url string) {
 			res, err := http.Get(url)
 			if err != nil {
 				log.Fatal(err)
 			}
 			defer res.Body.Close()
+			statusChan <- res.Status
 			f.Println(url, res.Status)
-			// WaitGroupから削除
-			wait.Done()
 		}(url)
 	}
-
-	wait.Wait()
+	f.Println("--- chanel 読み出し---")
+	for i := 0; i < len(urls); i++ {
+		f.Println(<-statusChan)
+	}
 
 }
 
