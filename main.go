@@ -11,28 +11,20 @@ import (
 
 func main() {
 	engine := gin.Default()
-	engine.POST("/upload", func(c *gin.Context) {
-		file, header, err := c.Request.FormFile("image")
-		if err != nil {
-			c.String(http.StatusBadRequest, "Bad request")
-			return
-		}
 
-		fileName := header.Filename
-		dir,  _ := os.Getwd()
-		out, err := os.Create(dir + "\\images\\"+fileName)
-		if err != nil {
-			log.Fatal(err)
-		}
-		defer out.Close()
-		 _, err = io.Copy(out, file)
-		 if err != nil {
-			log.Fatal(err)
-		}
+	// middleware
+	engine.Use(middleware.RecordUaAndTime)
 
-		c.JSON(http.StatusOK, gin.H{
-			"status": "ok",
-		})
-	})
+	// CRUD
+	bookEngine := engine.Group("/book")
+	{
+		v1 := bookEngine.Group("/v1")
+		{
+			v1.POST("/add", controller.BookAdd)
+			v1.GET("/list", controller.BookList)
+			v1.PUT("/update", controller.BookUpdate)
+			v1.DELETE("/add", controller.BookDelete)
+		}
+	}
 	engine.Run(":10000")
 }
