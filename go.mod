@@ -7,6 +7,8 @@ require (
 	github.com/gin-gonic/gin v1.7.4
 	github.com/go-delve/delve v1.7.2 // indirect
 	github.com/go-playground/validator/v10 v10.9.0 // indirect
+	github.com/go-sql-driver/mysql v1.6.0 // indirect
+	github.com/go-xorm/xorm v0.7.9 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/google/go-dap v0.6.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
@@ -19,6 +21,7 @@ require (
 	github.com/spf13/cobra v1.2.1 // indirect
 	github.com/ugorji/go v1.2.6 // indirect
 	go.starlark.net v0.0.0-20210901212718-87f333178d59 // indirect
+	go.uber.org/zap v1.19.1 // indirect
 	golang.org/x/arch v0.0.0-20210923205945-b76863e36670 // indirect
 	golang.org/x/crypto v0.0.0-20210921155107-089bfa567519 // indirect
 	golang.org/x/sys v0.0.0-20211004093028-2c5d950f24ef // indirect
