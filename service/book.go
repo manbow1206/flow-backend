@@ -30,3 +30,12 @@ func (BookService) UpdateBook(newBoook *model.Book) error {
 	}
 	return nil
 }
+
+func (BookService) DeleteBook(id int) error {
+	book := new(model.Book)
+	 _, err := DbEngine.Id(id).Delete(book)
+	 if err != nil {
+		return err
+	}
+	return nil
+}
