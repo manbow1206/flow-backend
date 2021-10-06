@@ -25,3 +25,12 @@ func BookAdd(c *gin.Context) {
 		"status": "ok",
 	})
 }
+
+func BookList(c *gin.Context) {
+	bookService := service.BookService{}
+	BookList := bookService.GetBookList()
+	c.JSON(http.StatusOK, gin.H{
+		"message": "ok",
+		"data": BookList,
+	})
+}
