@@ -13,3 +13,12 @@ func (BookService) SetBook(book *model.Book) error {
 	 }
 	 return nil
 }
+
+func (BookService) GetBookList() []model.Book {
+	bookLists := make([]model.Book, 0)
+	err := DbEngin.Distinct("id", "title", "content").Limit(10, 0).Find(&bookLists)
+	if err != nil {
+		return err
+	}
+	return bookLists
+}
