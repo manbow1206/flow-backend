@@ -22,3 +22,11 @@ func (BookService) GetBookList() []model.Book {
 	}
 	return bookLists
 }
+
+func (BookService) UpdateBook(newBoook *model.Book) error {
+	 _, err := DbEngin.Id(newBoook.Id).Update(newBook)
+	 if err != nil {
+		return err
+	}
+	return nil
+}
