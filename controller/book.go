@@ -34,3 +34,21 @@ func BookList(c *gin.Context) {
 		"data": BookList,
 	})
 }
+
+func BookUpdate (c *gin.Context) {
+	book := model.Book{}
+	err := c.Bind(&book)
+	if err != nil {
+		c.String(http.StatusBadRequest, "Bad request")
+		return
+	}
+	bookService := service.BookService{}
+	err := bookService.UpdateBook(&book)
+	if err != nil {
+		c.String(http.StatusInternalServerError, "Server Error")
+		return
+	}
+	c.JSON(http.StatusCreated, gin.H{
+		"status": "ok",
+	})
+}
