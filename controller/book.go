@@ -16,7 +16,7 @@ func BookAdd(c *gin.Context) {
 		return
 	}
 	bookService := service.BookService{}
-	err := bookService.SetBook(&book)
+	err = bookService.SetBook(&book)
 	if err != nil {
 		c.String(http.StatusInternalServerError, "Server Error")
 		return
@@ -43,7 +43,7 @@ func BookUpdate (c *gin.Context) {
 		return
 	}
 	bookService := service.BookService{}
-	err := bookService.UpdateBook(&book)
+	err = bookService.UpdateBook(&book)
 	if err != nil {
 		c.String(http.StatusInternalServerError, "Server Error")
 		return
@@ -61,7 +61,7 @@ func BookDelete(c *gin.Context){
 		return
 	}
 	bookService := service.BookService{}
-	err := bookService.DeleteBook(int(intId))
+	err = bookService.DeleteBook(int(intId))
 	if err != nil {
 		c.String(http.StatusInternalServerError, "Server Error")
 		return
