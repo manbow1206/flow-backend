@@ -1,12 +1,10 @@
 package main
 
 import (
-	"io"
-	"log"
-	"net/http"
-	"os"
-	"backend/middleware"
 	"github.com/gin-gonic/gin"
+	_ "github.com/go-sql-driver/mysql"
+	"backend/controller"
+	"backend/middleware"
 )
 
 func main() {
