@@ -7,7 +7,7 @@ import (
 type BookService struct {}
 
 func (BookService) SetBook(book *model.Book) error {
-	 _, err := DbEngin.Insert(book)
+	 _, err := DbEngine.Insert(book)
 	 if err != nil {
 		 return err
 	 }
@@ -16,15 +16,15 @@ func (BookService) SetBook(book *model.Book) error {
 
 func (BookService) GetBookList() []model.Book {
 	bookLists := make([]model.Book, 0)
-	err := DbEngin.Distinct("id", "title", "content").Limit(10, 0).Find(&bookLists)
+	err := DbEngine.Distinct("id", "title", "content").Limit(10, 0).Find(&bookLists)
 	if err != nil {
-		return err
+		panic(err)
 	}
 	return bookLists
 }
 
-func (BookService) UpdateBook(newBoook *model.Book) error {
-	 _, err := DbEngin.Id(newBoook.Id).Update(newBook)
+func (BookService) UpdateBook(newBook *model.Book) error {
+	 _, err := DbEngine.Id(newBook.Id).Update(newBook)
 	 if err != nil {
 		return err
 	}
